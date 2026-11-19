@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TunePerks — listen, complete tasks and earn rewards.">
+<title>TunePerks | Listen. Complete Tasks. Earn Rewards.</title>
+<style>
+:root{--ink:#182033;--muted:#687386;--brand:#6c4cf1;--brand2:#8c70ff;--bg:#f6f7fb;--line:#e8eaf1;--green:#159b69}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:#fff;border-bottom:1px solid var(--line);padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:0;z-index:2}
+.logo{font-size:24px;font-weight:800;color:var(--brand)}.logo span{color:#20283a}
+nav{display:flex;gap:18px;align-items:center}nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600}
+button{border:0;border-radius:11px;padding:12px 17px;font-weight:700;cursor:pointer}
+.primary{background:var(--brand);color:white}.secondary{background:#f0edff;color:var(--brand)}
+.wrap{max-width:1100px;margin:auto;padding:28px 5% 60px}
+.hero{background:linear-gradient(120deg,#21164d,#6c4cf1 65%,#9b83ff);border-radius:22px;padding:34px;color:white;display:grid;grid-template-columns:1.5fr 1fr;gap:20px;align-items:center}
+.hero h1{font-size:clamp(30px,5vw,48px);margin:8px 0 12px}.hero p{line-height:1.6;color:#eeeaff;max-width:550px}
+.pill{display:inline-block;background:#ffffff25;padding:7px 12px;border-radius:30px;font-size:12px;font-weight:700}
+.hero-art{font-size:100px;text-align:center}
+h2{font-size:22px;margin:30px 0 14px}.muted{color:var(--muted);line-height:1.5}
+.stats,.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat,.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px}
+.stat small{color:var(--muted)}.stat strong{display:block;font-size:25px;margin-top:8px}
+.card h3{margin:8px 0}.card p{font-size:14px;color:var(--muted);line-height:1.5}
+.emoji{font-size:28px}.task{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.task button{white-space:nowrap}.tag{font-size:12px;color:var(--green);font-weight:700}
+.notice{background:#fff8e8;border:1px solid #f3dfac;padding:14px 16px;border-radius:12px;color:#72551a;font-size:13px;line-height:1.5;margin-top:22px}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:25px}
+@media(max-width:700px){nav{gap:10px}nav a{font-size:12px}.hero{grid-template-columns:1fr}.hero-art{display:none}.stats,.cards{grid-template-columns:1fr}.wrap{padding-top:18px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Tune<span>Perks</span></div>
+  <nav><a href="#earn">Earn</a><a href="#tasks">Daily tasks</a><a href="#referrals">Referrals</a></nav>
+  <button class="secondary" onclick="demoMessage()">Sign in</button>
+</header>
+<main class="wrap">
+  <section class="hero">
+    <div>
+      <span class="pill">WELCOME TO TUNEPERKS</span>
+      <h1>Listen. Complete Tasks. Earn Rewards.</h1>
+      <p>Discover music, try simple daily activities and invite friends. Your rewards journey starts here.</p>
+      <button style="background:white;color:#5d40df" onclick="document.querySelector('#earn').scrollIntoView({behavior:'smooth'})">Explore ways to earn</button>
+    </div>
+    <div class="hero-art" aria-hidden="true">🎧🎵</div>
+  </section>
+
+  <h2>Your rewards dashboard</h2>
+  <section class="stats">
+    <div class="stat"><small>Demo points</small><strong id="points">0</strong></div>
+    <div class="stat"><small>Tasks completed</small><strong id="completed">0</strong></div>
+    <div class="stat"><small>Membership</small><strong style="font-size:20px">Free</strong></div>
+  </section>
+
+  <h2 id="earn">Ways to earn</h2>
+  <section class="cards">
+    <article class="card"><div class="emoji">🎶</div><h3>Music discovery</h3><p>Explore featured songs and music discoveries. Reward rules will be added when the platform is connected to a real music and rewards system.</p></article>
+    <article class="card"><div class="emoji">✅</div><h3>Daily activities</h3><p>Check out simple activities and build a daily habit of participating.</p></article>
+    <article class="card" id="referrals"><div class="emoji">🤝</div><h3>Invite friends</h3><p>Share TunePerks with friends. Referral tracking and reward rules will be configured in a later version.</p></article>
+  </section>
+
+  <h2 id="tasks">Try the demo tasks</h2>
+  <p class="muted">These buttons demonstrate how a task list could work. They do not pay real money or create withdrawable balances.</p>
+  <section class="cards" style="grid-template-columns:1fr">
+    <article class="card task"><div><span class="tag">+10 demo points</span><h3>Explore a music feature</h3><p>Preview the music discovery section.</p></div><button class="primary" onclick="completeTask(this,10)">Complete</button></article>
+    <article class="card task"><div><span class="tag">+5 demo points</span><h3>Check today's activities</h3><p>Take a look at the daily activities area.</p></div><button class="primary" onclick="completeTask(this,5)">Complete</button></article>
+    <article class="card task"><div><span class="tag">+5 demo points</span><h3>Learn about referrals</h3><p>Read how inviting friends may work.</p></div><button class="primary" onclick="completeTask(this,5)">Complete</button></article>
+  </section>
+
+  <section class="notice"><strong>Important:</strong> This is the first free frontend demo only. It has no real user accounts, song licensing or playback integration, payment processing, database, referral tracking, or cash withdrawals. Do not collect payments or promise earnings until those systems and the legal requirements are properly set up.</section>
+</main>
+<footer>© 2026 TunePerks. Built for music discovery and rewards.</footer>
+<script>
+let points=0, completed=0;
+function completeTask(button,value){
+  if(button.dataset.done)return;
+  button.dataset.done="yes";button.textContent="Completed";button.disabled=true;
+  button.classList.remove("primary");button.classList.add("secondary");
+  points+=value;completed++;
+  document.getElementById("points").textContent=points;
+  document.getElementById("completed").textContent=completed;
+}
+function demoMessage(){alert("Sign-in is a demo feature. Real accounts will be added in a later development step.");}
+</script>
+</body>
+</html>
